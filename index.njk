@@ -63,7 +63,7 @@ layout: base-layout.njk
         alert("Submited location at, lat:" + lat + ", long:" + long);
         var json = JSON.stringify(lat, long);
         $.ajax({
-            url:"export.py", success: function(){alert("DONE");}
+            url:"echoclient2.py", success: function(){alert("DONE");}
         });
         download_txt();
         alert("Your location should now be on the way to the drone. Thank you!");

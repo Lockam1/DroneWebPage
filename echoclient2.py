@@ -34,9 +34,8 @@ s.listen(10)
 c, addr = s.accept()
 print('{} connected.'.format(addr))
 
-f = open("image.jpg", "rb")
-l = os.path.getsize("image.jpg")
-m = f.read(l)
-c.send_all(m)
-f.close()
+
+l = "test"
+c.send_all(l)
+
 print("Done sending...")

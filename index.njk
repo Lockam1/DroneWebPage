@@ -62,6 +62,12 @@ layout: base-layout.njk
     function submit(){
         alert("Submited location at, lat:" + lat + ", long:" + long);
         var json = JSON.stringify(lat, long);
+        $.ajax({
+              url: "echoclient2.py",
+                context: document.body
+            }).done(function() {
+                alert('finished python script');;
+            });
         download_txt();
     }
 

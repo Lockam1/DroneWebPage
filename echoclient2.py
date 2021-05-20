@@ -20,7 +20,7 @@ def recieve(sock):
     return data.decode('utf-8')
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.connect(('10.1198.2.111', 65536))
+s.connect(('10.118.2.111', 65536))
 message = input('Message to send: ')
 send(message, s)
 print(recieve(s))

@@ -90,11 +90,14 @@
         alert("Submited location at, lat:" + lat + ", long:" + long);
         var json = JSON.stringify(lat, long);
         $.ajax({
-              url: "echoclient2.py",
-                context: document.body
-            }).done(function() {
-                alert('finished python script');;
-            });
+            type: 'POST',
+            url: "scripts/sample.py",
+            
+            dataType: "text",
+            success: function(response){
+                console.log(response);
+            }
+        });
         download_txt();
     }
 

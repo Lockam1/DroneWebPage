@@ -83,15 +83,25 @@
         infowindow.open(map,marker);
     }
 
+    function postRequest() {
+        console.log("Success1");
+        $.ajax({
+            
+            url: "/echoclient2.py", 
+            success: callbackFunc
+            
+        });
+    }
 
+    function callbackFunc(response) {
+        console.log("Success2");
+    }
     
    
     function submit(){
         alert("Submited location at, lat:" + lat + ", long:" + long);
         var json = JSON.stringify(lat, long);
-        $.ajax({
-            url:"echoclient2.py", success: function(){alert("DONE");}
-        });
+        postRequest();
         download_txt();
         alert("Your location should now be on the way to the drone. Thank you!");
     }

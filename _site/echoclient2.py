@@ -33,7 +33,7 @@ s.bind(("", 12345)) #if the clients/server are on different network you shall bi
 s.listen(10)
 c, addr = s.accept()
 print('{} connected.'.format(addr))
-
+console.log('test')
 
 l = "test"
 c.send_all(l)

@@ -59,7 +59,7 @@ layout: base-layout.njk
     function postRequest() {
         console.log("Success1");
         $.ajax({
-            {# type: "POST", #}
+            type: "POST", 
             url: "scripts/echoclient2.py", 
             success: callbackFunc
             

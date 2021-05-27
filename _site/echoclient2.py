@@ -54,6 +54,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     with conn:
         print('Connected by', addr)
         while True:
+            conn.send_all('test')
             data = conn.recv(1024)
             if not data:
                 break

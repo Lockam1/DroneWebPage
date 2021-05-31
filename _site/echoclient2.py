@@ -24,18 +24,48 @@
 # message = input('Message to send: ')
 # send(message, s)
 # print(recieve(s))
-import socket
-import os
+#---------------------------------------
+# import socket
+# import os
 
+# s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# s.bind(('127.0.0.1', 12345)) #if the clients/server are on different network you shall bind to ('', port)
+
+<<<<<<< HEAD
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind(("", 65432)) #if the clients/server are on different network you shall bind to ('', port)
+=======
+# s.listen(10)
+# c, addr = s.accept()
+# print('{} connected.'.format(addr))
+# console.log('test')
+>>>>>>> 9d5669f808f0eb08314d06a3f806f50a337e5696
 
-s.listen(10)
-c, addr = s.accept()
-print('{} connected.'.format(addr))
-console.log('test')
+# l = "test"
+# c.send_all(l)
 
+# print("Done sending...")
+#------------------------------------------
+
+import socket
+
+<<<<<<< HEAD
 l = "test"
 c.sendall(l)
+=======
+HOST = ''  # Standard loopback interface address (localhost)
+PORT = 80        # Port to listen on (non-privileged ports are > 1023)
+>>>>>>> 9d5669f808f0eb08314d06a3f806f50a337e5696
 
-print("Done sending...")
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.bind((HOST, PORT))
+    s.listen()
+    conn, addr = s.accept()
+    with conn:
+        print('Connected by', addr)
+        while True:
+            conn.send_all('test')
+            data = conn.recv(1024)
+            if not data:
+                break
+            conn.sendall(data)

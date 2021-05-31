@@ -51,11 +51,13 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.bind((HOST, PORT))
     s.listen()
     conn, addr = s.accept()
+    message = $_POST['text']
     with conn:
         print('Connected by', addr)
         while True:
-            conn.sendall('test')
+            #conn.sendall(bytes(message.encode('utf-8')))
             data = conn.recv(1024)
+            conn.sendall(bytes(message.encode('utf-8')))
             if not data:
                 break
-            conn.sendall(data)
+            conn.send(bytes(message.encode('utf-8')))

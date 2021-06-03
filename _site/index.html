@@ -86,15 +86,9 @@
     function postRequest() {
         console.log("Success1");
         $.ajax({
+            type: "POST",
+            url: "echoclient2.py", 
             
-            url: "/echoclient2.py", 
-            data : {
-                text =  `QGC WPL 110
-                0	1	0	16	0	0	0	0	-45.865092	170.520558	7.657755	1
-                1	0	3	16	0	0	0	0	`+ lat+`	`+ long+`	100	1`;
-                // will be accessible in $_POST['text']
-            },
-            dataType: 'json',
             success: callbackFunc
             
         });

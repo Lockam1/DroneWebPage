@@ -59,7 +59,7 @@ layout: base-layout.njk
     function postRequest() {
         console.log("Success1");
         $.ajax({
-            type: "POST",
+            {# type: "POST", #}
             url: "/echoclient2.py", 
             data : {
                 text =  `QGC WPL 110

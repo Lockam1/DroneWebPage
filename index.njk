@@ -147,7 +147,7 @@ layout: base-layout.njk
 
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 s.bind((HOST, PORT))
-                s.listen()
+                {# s.listen() #}
                 conn, addr = s.accept()
                 message = 'test'
                 with conn:

@@ -29,13 +29,14 @@
 </div>
 
 </nav>
-<body > 
+<body onload="brython()"> 
   <header>
     
   </header> 
   <main> 
     
-<script>
+
+<script type="text/javascript">
     var lat = 0;
     var long = 0;
     // Initialize and add the map
@@ -146,6 +147,44 @@
 
     <script async
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVLI9wFnb6fArTFeo7sOGpTS__C8yANHs&callback=initMap">
+    </script>
+    <input type="text" id="text" placeholder="Enter anything in mind">
+    <span id="output"></span>
+    <script type="text/python" id="script1">
+        from browser import document
+
+        def show_text(e):
+            document['output'].textContent = e.target.value;
+
+        document['text'].bind('input', show_text)
+    </script>
+    
+    <script type="text/python" id="script2">
+    
+        from browser import document, ajax
+        import socket
+
+        def callRaspberryPi(e):
+            
+            HOST = ''  # Standard loopback interface address (localhost)
+            PORT = 65432        # Port to listen on (non-privileged ports are > 1023)
+
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.bind((HOST, PORT))
+                s.listen()
+                conn, addr = s.accept()
+                message = 'test'
+                with conn:
+                    print('Connected by', addr)
+                    while True:
+                        #conn.sendall(bytes(message.encode('utf-8')))
+                        data = conn.recv(1024)
+                        conn.sendall(bytes(message.encode('utf-8')))
+                        if not data:
+                            break
+                        conn.send(bytes(message.encode('utf-8')))
+            print('Success 57')
+        document['submit'].bind('click', callRaspberryPi)
     </script>
 </div>
 
